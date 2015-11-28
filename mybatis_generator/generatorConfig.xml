@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <context id="testTables" targetRuntime="MyBatis3">
+        <!-- 数据库连接的信息：驱动类，链接地址，用户名，密码-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/user"
+                        userId="root"
+                        password="101011">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="true"/>
+        </javaTypeResolver>
+
+        <!--targetProject即生成PO类的位置-->
+        <javaModelGenerator targetPackage="com.szmt.sec.po" targetProject="mybatis_generator">
+            <property name="enableSubPackages" value="false"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!--targetProjec：mapper映射文件生成的位置-->
+        <sqlMapGenerator targetPackage="com.szmt.sec.mapper" targetProject="mybatis_generator">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!--targetPackage:mapper接口生成的位置-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.szmt.sec.mapper" targetProject="mybatis_generator">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!--对应数据库表 mysql可以加入主键自增 字段命名 忽略某字段等-->
+        <table tableName="users">
+        </table>
+        <table tableName="student">
+    </table>
+
+    </context>
+</generatorConfiguration>
